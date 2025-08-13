@@ -1,73 +1,78 @@
-# Welcome to your Lovable project
+# Campus Connect Pipeline
 
-## Project info
+A comprehensive software engineering project developed as part of the Microsoft SEFA 2025 Workshop submission.
 
-**URL**: https://lovable.dev/projects/3df144a5-34b7-41fc-995e-46f334d073c6
+**Project URL**: https://lovable.dev/projects/3df144a5-34b7-41fc-995e-46f334d073c6
 
-## How can I edit this code?
+## About This Project
 
-There are several ways of editing your application.
+Campus Connect Pipeline is a scalable web application that addresses inefficiencies in campus communication and resource management. The system features a comprehensive College Attendance System with real-time tracking, student management, class scheduling, and analytics reporting.
 
-**Use Lovable**
+## How to Edit This Code
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3df144a5-34b7-41fc-995e-46f334d073c6) and start prompting.
+There are several ways to modify and work with this application:
 
-Changes made via Lovable will be committed automatically to this repo.
+### Local Development Setup
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Clone and run the project locally using your preferred IDE:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Step 3: Install dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+**Requirements**: Node.js & npm - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Alternative Editing Methods
 
-**Use GitHub Codespaces**
+**GitHub Direct Editing**
+- Navigate to the desired file(s)
+- Click the "Edit" button (pencil icon) at the top right
+- Make your changes and commit
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**GitHub Codespaces**
+- Navigate to the main repository page
+- Click on the "Code" button (green button)
+- Select the "Codespaces" tab
+- Click "New codespace" to launch the development environment
+- Edit files directly and commit your changes
 
-## What technologies are used for this project?
+## Technologies Used
 
-This project is built with:
+This project is built with modern web technologies:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Fast build tool and development server
+- **TypeScript** - Type-safe JavaScript development
+- **React** - Component-based UI library
+- **shadcn-ui** - Modern UI component library
+- **Tailwind CSS** - Utility-first CSS framework
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/3df144a5-34b7-41fc-995e-46f334d073c6) and click on Share -> Publish.
+The application can be deployed through various methods. For quick deployment, use the project URL provided above.
 
-## Can I connect a custom domain to my Lovable project?
+## Custom Domain Setup
 
-Yes, you can!
+Custom domains can be connected to this project for production deployment. Navigate to Project > Settings > Domains and click Connect Domain for detailed setup instructions.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Project Features
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- **Real-time Dashboard**: Live attendance tracking and performance metrics
+- **Student Management**: Comprehensive database with advanced search capabilities
+- **Class Administration**: Complete academic program and resource management
+- **Analytics & Reporting**: Visual insights with export capabilities
+- **Azure Cloud Integration**: Scalable microservices architecture
+
+## Authors
+
+- Kumar Amritansh | Registration No: 2341001081 | SOA
+- Soyam Rout | Registration No: 2341018178 | SOA
