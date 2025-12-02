@@ -1,40 +1,18 @@
 import { supabase } from '@/integrations/supabase/client';
+import type { Tables, TablesInsert, TablesUpdate } from '@/integrations/supabase/types';
 
 export { supabase };
 
-// Database Types
-export interface Student {
-  id: string;
-  student_id: string;
-  name: string;
-  email: string;
-  class_id: string;
-  status: 'active' | 'inactive';
-  created_at: string;
-  updated_at: string;
-}
+// Re-export types from the auto-generated types
+export type Student = Tables<'students'>;
+export type Class = Tables<'classes'>;
+export type AttendanceRecord = Tables<'attendance_records'>;
 
-export interface Class {
-  id: string;
-  class_code: string;
-  name: string;
-  instructor: string;
-  schedule: string;
-  room: string;
-  status: 'active' | 'inactive';
-  created_at: string;
-  updated_at: string;
-}
-
-export interface AttendanceRecord {
-  id: string;
-  student_id: string;
-  class_id: string;
-  date: string;
-  status: 'present' | 'absent' | 'late';
-  marked_by: string;
-  created_at: string;
-}
+export type StudentInsert = TablesInsert<'students'>;
+export type StudentUpdate = TablesUpdate<'students'>;
+export type ClassInsert = TablesInsert<'classes'>;
+export type ClassUpdate = TablesUpdate<'classes'>;
+export type AttendanceRecordInsert = TablesInsert<'attendance_records'>;
 
 // Helper functions for database operations
 export const studentService = {
@@ -42,17 +20,17 @@ export const studentService = {
     const { data, error } = await supabase
       .from('students')
       .select('*, classes(name)')
-      .eq('status', 'active')
-      .order('name');
+      .eq('is_active', true)
+      .order('first_name');
     
     if (error) throw error;
     return data;
   },
 
-  async create(student: Omit<Student, 'id' | 'created_at' | 'updated_at'>) {
+  async create(student: StudentInsert) {
     const { data, error } = await supabase
       .from('students')
-      .insert([student])
+      .insert(student)
       .select()
       .single();
     
@@ -60,7 +38,7 @@ export const studentService = {
     return data;
   },
 
-  async update(id: string, updates: Partial<Student>) {
+  async update(id: string, updates: StudentUpdate) {
     const { data, error } = await supabase
       .from('students')
       .update(updates)
@@ -87,17 +65,17 @@ export const classService = {
     const { data, error } = await supabase
       .from('classes')
       .select('*')
-      .eq('status', 'active')
+      .eq('is_active', true)
       .order('name');
     
     if (error) throw error;
     return data;
   },
 
-  async create(classData: Omit<Class, 'id' | 'created_at' | 'updated_at'>) {
+  async create(classData: ClassInsert) {
     const { data, error } = await supabase
       .from('classes')
-      .insert([classData])
+      .insert(classData)
       .select()
       .single();
     
@@ -105,7 +83,7 @@ export const classService = {
     return data;
   },
 
-  async update(id: string, updates: Partial<Class>) {
+  async update(id: string, updates: ClassUpdate) {
     const { data, error } = await supabase
       .from('classes')
       .update(updates)
@@ -119,7 +97,7 @@ export const classService = {
 };
 
 export const attendanceService = {
-  async markAttendance(records: Omit<AttendanceRecord, 'id' | 'created_at'>[]) {
+  async markAttendance(records: AttendanceRecordInsert[]) {
     const { data, error } = await supabase
       .from('attendance_records')
       .upsert(records, { 
@@ -139,7 +117,8 @@ export const attendanceService = {
         students (
           id,
           student_id,
-          name
+          first_name,
+          last_name
         )
       `)
       .eq('class_id', classId)
@@ -156,7 +135,6 @@ export const attendanceService = {
         *,
         classes (
           id,
-          class_code,
           name
         )
       `)
@@ -179,11 +157,11 @@ export const attendanceService = {
         students (
           id,
           student_id,
-          name
+          first_name,
+          last_name
         ),
         classes (
           id,
-          class_code,
           name
         )
       `);
